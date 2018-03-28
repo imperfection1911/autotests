@@ -22,9 +22,14 @@ class LoginPage:
 
     def check_login(self):
         main_page_header = self.BaseActions.find(Locators.LoginPageLocators.MAIN_PAGE_HEADER)
-        if self.BaseActions.get_value(main_page_header) == "Мои услуги":
-            return True
-        return False
+        try:
+            if self.BaseActions.get_value(main_page_header) == "Мои услуги":
+                return True
+            return False
+        except AttributeError:
+            self.BaseActions.screenshot('cant_login.png')
+            return False
+
 
 
 

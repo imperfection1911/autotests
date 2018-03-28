@@ -2,6 +2,8 @@ import unittest
 from selenium import webdriver
 from Pages.LoginPage import LoginPage
 from Pages.ServicesPage import ServicesPage
+from Pages.HeaderPage import Header
+from Pages.ChangePasswordAndLoginPage import ChangePasswordAndLoginPage
 from Configuration import Configuration
 import xmlrunner
 
@@ -16,10 +18,7 @@ class LoginTest(unittest.TestCase):
     def test_login(self):
         page = LoginPage(self.driver)
         page.lka_login(page.login, page.password)
-        try:
-            login = page.check_login()
-        except AttributeError:
-            login = False
+        login = page.check_login()
         self.assertTrue(login)
 
     def test_activation_command_repeat(self):
@@ -31,8 +30,34 @@ class LoginTest(unittest.TestCase):
         repeat_result = page.check_command_repeat_result()
         self.assertTrue(repeat_result)
 
-    """def tearDown(self):
-        self.driver.close() """
+    def test_change_password(self):
+        page = LoginPage(self.driver)
+        page.lka_login(page.login, page.password)
+        current_password = page.password
+        page = Header(self.driver)
+        page.click_change_password_button()
+        page = ChangePasswordAndLoginPage(self.driver)
+        new_password = page.generate_password()
+        change_password_result = page.fill_change_password_form(current_password, new_password)
+        self.assertTrue(change_password_result)
+        # меняем пароль обратно
+        page.fill_change_password_form(new_password, current_password)
+
+    def test_change_login(self):
+        page = LoginPage(self.driver)
+        page.lka_login(page.login, page.password)
+        password = page.password
+        page = Header(self.driver)
+        page.click_change_password_button()
+        page = ChangePasswordAndLoginPage(self.driver)
+        current_login = page.get_current_login()
+        new_login = 'avzharov'
+        change_login_result = page.fill_change_login_form(new_login,password)
+        self.assertTrue(change_login_result)
+        page.fill_change_login_form(current_login, password)
+
+    def tearDown(self):
+        self.driver.close()
 
 if __name__ == "__main__":
     unittest.main(testRunner=xmlrunner.XMLTestRunner(output='rep'), failfast=False, buffer=False, catchbreak=False)
