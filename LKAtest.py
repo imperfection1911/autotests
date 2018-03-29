@@ -52,9 +52,15 @@ class LoginTest(unittest.TestCase):
         page = ChangePasswordAndLoginPage(self.driver)
         current_login = page.get_current_login()
         new_login = 'avzharov'
-        change_login_result = page.fill_change_login_form(new_login,password)
+        change_login_result = page.fill_change_login_form(new_login, password)
         self.assertTrue(change_login_result)
         page.fill_change_login_form(current_login, password)
+
+    def test_cash_transfer(self):
+        page = LoginPage(self.driver)
+        page.lka_login(page.login, page.password)
+        page = ServicesPage(self.driver)
+        self.assertTrue(page.cash_transfer())
 
     def tearDown(self):
         self.driver.close()

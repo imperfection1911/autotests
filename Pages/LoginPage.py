@@ -12,6 +12,7 @@ class LoginPage:
         self.login = self.config.read_param('lka', 'login')
         self.password = self.config.read_param('lka', 'password')
 
+    # логин
     def lka_login(self, login, password):
         login_input = self.BaseActions.find(Locators.LoginPageLocators.LOGIN_INPUT)
         self.BaseActions.element_input(login_input, login)
@@ -20,6 +21,7 @@ class LoginPage:
         enter_button = self.BaseActions.find(Locators.LoginPageLocators.ENTER_BUTTON)
         self.BaseActions.click(enter_button)
 
+    # проверка попадания на главную страницу
     def check_login(self):
         main_page_header = self.BaseActions.find(Locators.LoginPageLocators.MAIN_PAGE_HEADER)
         try:

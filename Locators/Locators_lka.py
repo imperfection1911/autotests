@@ -16,6 +16,16 @@ class ServicesPageLocators:
     ACTIVATION_COMMAND_REPEAT_RESULT = (By.XPATH,
                                         '//span[@class="repeat-command-success" and @style="display: inline;"]')
 
+    PERSONAL_ACCOUNT_TABLE = (By.XPATH, '/html/body/div/div/div/div[3]/section/div/div/div/div/form[2]/div/table/tbody')
+
+    SERVICE_DROP_LIST = (By.XPATH, '//div[@class="select2-result-label"]')
+
+    CASH_TRANSFER_MESSAGE = (By.XPATH, '/html/body/div[4]/div/div/div[1]/div')
+
+    CASH_TRANSFER_MODAL_BUTTON = (By.XPATH, '/html/body/div[4]/div/div/div[2]/button')
+
+    CASH_TRANSFER_CONTROL_ELEMENT = (By.XPATH, '//button[@class="is-btn is-btn-sm ladda-button blue cntr"]')
+
 
 class HeaderLocators:
 

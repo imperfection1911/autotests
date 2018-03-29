@@ -21,6 +21,14 @@ class BasePageActions:
         except selenium.common.exceptions.TimeoutException as e:
             print(e)
 
+    def wait_for_visibility(self, element):
+        try:
+            visible_element = WebDriverWait(self.driver, int(self.config.read_param('webdriver', 'wait_timeout'))).\
+                until(EC.visibility_of(element))
+            return visible_element
+        except selenium.common.exceptions.TimeoutException as e:
+            print(e)
+
     # ввод данных в элемент
     @staticmethod
     def element_input(element, keys):
@@ -63,5 +71,3 @@ class BasePageActions:
     # переключится на модальное окно
     def switch_active(self):
         self.driver.switch_to.active_element
-
-

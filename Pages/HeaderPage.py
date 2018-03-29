@@ -18,5 +18,3 @@ class Header:
         except AttributeError:
             self.BaseActions.screenshot('cant_click_change_password_button.png')
             return False
-
-

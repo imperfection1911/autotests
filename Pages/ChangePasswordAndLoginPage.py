@@ -12,6 +12,7 @@ class ChangePasswordAndLoginPage:
         self.BaseActions = BasePageActions(self.driver)
         self.config = Configuration()
 
+    # смена пароля
     def fill_change_password_form(self, current_password, new_password):
         try:
             current_password_input = self.BaseActions.find(Locators.ChangePageLocators.CURRENT_PASSWORD_INPUT)
@@ -36,6 +37,7 @@ class ChangePasswordAndLoginPage:
             self.BaseActions.screenshot('cant_change_password.png')
             return False
 
+    # смена логина
     def fill_change_login_form(self, login, password):
         try:
             login_input = self.BaseActions.find(Locators.ChangePageLocators.CHANGE_LOGIN_INPUT)
@@ -49,18 +51,22 @@ class ChangePasswordAndLoginPage:
             self.BaseActions.switch_active()
             message_element = self.BaseActions.find(Locators.ChangePageLocators.CHANGE_LOGIN_MESSAGE)
             message = self.BaseActions.get_value(message_element)
+            self.BaseActions.wait_for_visibility(modal_button)
             self.BaseActions.click(modal_button)
             if "Логин успешно изменен. Новый логин" in message:
                 return True
+            self.BaseActions.screenshot('cant_change_login.png')
             return False
         except AttributeError:
             self.BaseActions.screenshot('cant_change_login.png')
             return False
 
+    # получить из страницы текущий логин
     def get_current_login(self):
         login_input = self.BaseActions.find(Locators.ChangePageLocators.CHANGE_LOGIN_INPUT)
         return self.BaseActions.get_attr(login_input, 'value')
 
+    # сгенерить пароль на замену
     @staticmethod
     def generate_password():
         password = []
