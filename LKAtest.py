@@ -5,6 +5,7 @@ from Pages.ServicesPage import ServicesPage
 from Pages.HeaderPage import Header
 from Pages.ChangePasswordAndLoginPage import ChangePasswordAndLoginPage
 from Configuration import Configuration
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 import xmlrunner
 
 
@@ -12,7 +13,9 @@ class LoginTest(unittest.TestCase):
 
     def setUp(self):
         self.config = Configuration()
-        self.driver = webdriver.Firefox()
+        # self.driver = webdriver.Firefox()
+        self.driver = webdriver.Remote(command_executor=self.config.read_param('webdriver', 'hub'),
+                                       desired_capabilities=DesiredCapabilities.FIREFOX)
         self.driver.get(self.config.read_param('lka', 'url'))
 
     def test_login(self):
