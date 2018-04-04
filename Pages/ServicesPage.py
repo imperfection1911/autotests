@@ -66,6 +66,7 @@ class ServicesPage:
                         self.BaseActions.click(button_cell)
                         self.BaseActions.switch_active()
                         message_element = self.BaseActions.find(Locators.ServicesPageLocators.CASH_TRANSFER_MESSAGE)
+                        time.sleep(1)
                         message = self.BaseActions.get_value(message_element)
                         if message == "Средства успешно перенесены":
                             return True
