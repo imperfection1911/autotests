@@ -19,7 +19,7 @@ class BasePageActions:
                 until(EC.presence_of_element_located(locator))
             return element
         except selenium.common.exceptions.TimeoutException as e:
-            print(e)
+            return False
 
     def wait_for_visibility(self, element):
         try:
@@ -27,7 +27,15 @@ class BasePageActions:
                 until(EC.visibility_of(element))
             return visible_element
         except selenium.common.exceptions.TimeoutException as e:
-            print(e)
+            return False
+
+    def clickable(self, element):
+        try:
+            clickable_element = WebDriverWait(self.driver, int(self.config.read_param('webdriver', 'wait_timeout')))\
+                .until(EC.element_to_be_clickable(element))
+            return clickable_element
+        except selenium.common.exceptions.TimeoutException as e:
+            return False
 
     # ввод данных в элемент
     @staticmethod

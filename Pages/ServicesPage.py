@@ -15,6 +15,7 @@ class ServicesPage:
     def click_command_repeat_button(self):
         try:
             button = self.BaseActions.find(Locators.ServicesPageLocators.ACTIVATION_COMMAND_REPEAT_BUTTON)
+            self.BaseActions.clickable(Locators.ServicesPageLocators.ACTIVATION_COMMAND_REPEAT_BUTTON)
             self.BaseActions.click(button)
             return True
         except AttributeError:

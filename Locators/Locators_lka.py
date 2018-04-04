@@ -15,11 +15,11 @@ class LoginPageLocators:
 
 class ServicesPageLocators:
 
-    ACTIVATION_COMMAND_REPEAT_BUTTON = (By.XPATH, '//*[@id="page-wrap"]/div/div/div[3]/section/div/div'
-                                                  '/div/div/div[1]/form/div[1]/div[3]/div/button')
+    ACTIVATION_COMMAND_REPEAT_BUTTON = (By.XPATH, '//*[@id="page-wrap"]/div/div/div[3]/section/div/div/div/'
+                                                  'div/div[1]/form/div[1]/div[3]/div/button')
     ACTIVATION_COMMAND_REPEAT_RESULT = (By.XPATH,
-                                        '//*[@id="page-wrap"]/div/div/div[3]'
-                                        '/section/div/div/div/div/div[1]/form/div[1]/div[5]/div/span[1]')
+                                        '//*[@id="page-wrap"]/div/div/div[3]/section/div/'
+                                        'div/div/div/div[1]/form/div[1]/div[5]/div/span[1][@style="display: inline;"]')
 
     PERSONAL_ACCOUNT_TABLE = (By.XPATH, '/html/body/div/div/div/div[3]/section/div/div/div/div/form[2]/div/table/tbody')
 
