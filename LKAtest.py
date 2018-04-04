@@ -13,9 +13,9 @@ class LoginTest(unittest.TestCase):
 
     def setUp(self):
         self.config = Configuration()
-        # self.driver = webdriver.Firefox()
+        # self.driver = webdriver.Chrome()
         self.driver = webdriver.Remote(command_executor=self.config.read_param('webdriver', 'hub'),
-                                       desired_capabilities=DesiredCapabilities.FIREFOX)
+                                       desired_capabilities=DesiredCapabilities.CHROME)
         self.driver.get(self.config.read_param('lka', 'url'))
 
     def test_login(self):
@@ -66,7 +66,7 @@ class LoginTest(unittest.TestCase):
         self.assertTrue(page.cash_transfer())
 
     def tearDown(self):
-        self.driver.close()
+        self.driver.quit()
 
 if __name__ == "__main__":
-    unittest.main(testRunner=xmlrunner.XMLTestRunner(output='rep'), failfast=False, buffer=False, catchbreak=False)
+    unittest.main(testRunner=xmlrunner.XMLTestRunner(output='report'), failfast=False, buffer=False, catchbreak=False)

@@ -28,6 +28,7 @@ class ServicesPage:
             result_message = self.BaseActions.get_value(result)
             if result_message == 'Повтор команд активации прошел успешно':
                 return True
+            self.BaseActions.screenshot('unsuccessful_command_repeat.png')
             return False
         except AttributeError:
             self.BaseActions.screenshot('unsuccessful_command_repeat.png')
@@ -70,5 +71,8 @@ class ServicesPage:
                         self.BaseActions.screenshot('cash_transfer.png')
                         return False
         except AttributeError:
+            self.BaseActions.screenshot('cash_transfer.png')
+            return False
+        except IndexError:
             self.BaseActions.screenshot('cash_transfer.png')
             return False
