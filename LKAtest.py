@@ -13,9 +13,9 @@ class LoginTest(unittest.TestCase):
 
     def setUp(self):
         self.config = Configuration()
-        #self.driver = webdriver.Chrome()
-        self.driver = webdriver.Remote(command_executor=self.config.read_param('webdriver', 'hub'),
-                                       desired_capabilities=DesiredCapabilities.CHROME)
+        self.driver = webdriver.Chrome()
+        #self.driver = webdriver.Remote(command_executor=self.config.read_param('webdriver', 'hub'),
+        #                               desired_capabilities=DesiredCapabilities.CHROME)
         self.driver.get(self.config.read_param('lka', 'url'))
 
     def test_login(self):
@@ -59,11 +59,11 @@ class LoginTest(unittest.TestCase):
         self.assertTrue(change_login_result)
         page.fill_change_login_form(current_login, password)
 
-    def test_cash_transfer(self):
-        page = LoginPage(self.driver)
-        page.lka_login(page.login, page.password)
-        page = ServicesPage(self.driver)
-        self.assertTrue(page.cash_transfer())
+#    def test_cash_transfer(self):
+#        page = LoginPage(self.driver)
+#        page.lka_login(page.login, page.password)
+#        page = ServicesPage(self.driver)
+#        self.assertTrue(page.cash_transfer())
 
     def tearDown(self):
         self.driver.quit()
