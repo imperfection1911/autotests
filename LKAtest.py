@@ -13,9 +13,9 @@ class LoginTest(unittest.TestCase):
 
     def setUp(self):
         self.config = Configuration()
-        self.driver = webdriver.Chrome()
-        #self.driver = webdriver.Remote(command_executor=self.config.read_param('webdriver', 'hub'),
-        #                               desired_capabilities=DesiredCapabilities.CHROME)
+        #self.driver = webdriver.Chrome()
+        self.driver = webdriver.Remote(command_executor=self.config.read_param('webdriver', 'hub'),
+                                       desired_capabilities=DesiredCapabilities.CHROME)
         self.driver.get(self.config.read_param('lka', 'url'))
 
     def test_login(self):
