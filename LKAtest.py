@@ -13,7 +13,7 @@ class LoginTest(unittest.TestCase):
 
     def setUp(self):
         self.config = Configuration()
-        # self.driver = webdriver.Chrome()
+        #self.driver = webdriver.Chrome()
         self.driver = webdriver.Remote(command_executor=self.config.read_param('webdriver', 'hub'),
                                        desired_capabilities=DesiredCapabilities.CHROME)
         self.driver.get(self.config.read_param('lka', 'url'))
@@ -54,7 +54,7 @@ class LoginTest(unittest.TestCase):
         page.click_change_password_button()
         page = ChangePasswordAndLoginPage(self.driver)
         current_login = page.get_current_login()
-        new_login = 'avzharov'
+        new_login = 'aaksenov'
         change_login_result = page.fill_change_login_form(new_login, password)
         self.assertTrue(change_login_result)
         page.fill_change_login_form(current_login, password)
