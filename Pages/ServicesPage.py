@@ -77,4 +77,6 @@ class ServicesPage:
             return False
         except IndexError:
             self.BaseActions.screenshot('cash_transfer.png')
+        except ValueError:
+            self.BaseActions.screenshot('cash_transfer.png')
             return False
