@@ -59,11 +59,11 @@ class LoginTest(unittest.TestCase):
         self.assertTrue(change_login_result)
         page.fill_change_login_form(current_login, password)
 
-#    def test_cash_transfer(self):
-#        page = LoginPage(self.driver)
-#        page.lka_login(page.login, page.password)
-#        page = ServicesPage(self.driver)
-#        self.assertTrue(page.cash_transfer())
+    def test_cash_transfer(self):
+        page = LoginPage(self.driver)
+        page.lka_login(page.login, page.password)
+        page = ServicesPage(self.driver)
+        self.assertTrue(page.cash_transfer())
 
     def tearDown(self):
         self.driver.quit()
